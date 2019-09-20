@@ -8,10 +8,10 @@ Open the solution file named "EmployeeManager.sln" from EmployeeManager folder i
 Press ctrl+F5 to run the application.
 
 Tech Stack Used:
-Visual Studio 2019
-entity framework  -  Version=6.0.0.0  (code-first approach)
-ASP.NET MVC - newVersion="5.2.7.0"
-IIS Express is used as the server.
-SQL Server Express LocalDB is used to store application data in a .mdf file. The database files are present in the App_Data folder.
-Nuget Package Manager
+Visual Studio 2019,
+entity framework  -  Version=6.0.0.0  (code-first approach),
+ASP.NET MVC - newVersion="5.2.7.0",
+IIS Express is used as the server,
+SQL Server Express LocalDB is used to store application data in a .mdf file. The database files are present in the App_Data folder,
+Nuget Package Manager,
 Bootstrap 4 is used to build the UI.
