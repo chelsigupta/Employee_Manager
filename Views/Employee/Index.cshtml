@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EmployeeManager.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employees</h2>
+
+<p>
+    @Html.ActionLink("Add Employee", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Position", "Index", new { sortOrder = ViewBag.PositionSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Department", "Index", new { sortOrder = ViewBag.DepartmentSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Manager", "Index", new { sortOrder = ViewBag.ManagerSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Start Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Status", "Index", new { sortOrder = ViewBag.StatusSortParm })
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Position.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Department.Name)
+    </td>
+    <td>        
+        @Html.DisplayFor(modelItem => item.Manager.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.StartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.EmployeeID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeID }) |
+
+        @if (item.Status == EmployeeManager.Models.Status.ACTIVE)
+        { @Html.ActionLink("Terminate", "Terminate", new { id = item.EmployeeID }) }
+        else
+        { <text>Terminated</text> } |
+
+        @Html.ActionLink("Activity Log", "Activity", new { id = item.EmployeeID })
+    </td>
+</tr>
+    }
+
+</table>
